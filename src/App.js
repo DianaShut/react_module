@@ -1,10 +1,12 @@
-import logo from './logo.svg';
-import './App.css';
+ import './App.css';
+import {Posts} from "./components/PostsContainer/Posts";
+ import {Launches} from "./components/SpaceXContainer/Launches";
 
 const App = () => {
   return (
       <div>
-        App
+       {/*<Posts/>*/}
+          <Launches/>
       </div>
   );
 };
