@@ -1,9 +1,10 @@
 import './App.css';
+import {UsersContainer} from "./components/UsersContainer";
 
 const App = () => {
   return (
       <div>
-        App
+        <UsersContainer/>
       </div>
   );
 };
