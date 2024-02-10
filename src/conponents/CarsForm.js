@@ -3,15 +3,15 @@ import {carService} from "../services/carService";
 import {useEffect} from "react";
 
 const CarsForm = ({setTrigger, carForUpdate, setCarForUpdate}) => {
-    const {register, reset, handleSubmit, formState:{isValid,errors}}= useForm({mode: "all"});
+    const {register, reset, handleSubmit, formState:{isValid,errors}, setValue}= useForm({mode: "all"});
 
-    // useEffect(() => {
-    //     if (carForUpdate) {
-    //         setValue('brand', carForUpdate.brand, {shouldValidate: true})
-    //         setValue('price', carForUpdate.price, {shouldValidate: true})
-    //         setValue('year', carForUpdate.year, {shouldValidate: true})
-    //     }
-    // }, [carForUpdate]);
+    useEffect(() => {
+        if (carForUpdate) {
+            setValue('brand', carForUpdate.brand, {shouldValidate: true}) //провірити валідацію
+            setValue('price', carForUpdate.price, {shouldValidate: true})
+            setValue('year', carForUpdate.year, {shouldValidate: true})
+        }
+    }, [carForUpdate]);
 
     const save = async (car) =>{
         await carService.create(car)
@@ -38,6 +38,9 @@ const CarsForm = ({setTrigger, carForUpdate, setCarForUpdate}) => {
                 min:{value: 1990, message:'min 1990'},
                 max:{value:new Date().getFullYear(), message:'max current year'}})}/>
                 <button disabled={!isValid}>Save</button>
+                {errors.brand && <div>{errors.brand.message}</div>}
+                {errors.price && <div>{errors.price.message}</div>}
+                {errors.year && <div>{errors.year.message}</div>}
             </form>
         </div>
     );
