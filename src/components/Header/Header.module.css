@@ -16,3 +16,7 @@
     text-decoration: underline;
     color: #252546;
 }
+
+.Header a[class='active']{
+    color: #5d5d5d;
+}
