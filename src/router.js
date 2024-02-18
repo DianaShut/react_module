@@ -2,6 +2,7 @@ import {createBrowserRouter, Navigate} from "react-router-dom";
 
 import {MainLayout} from "./layouts/MainLayout";
 import {PostDetailsPage, PostsPage, UserDetailsPage, UsersPage} from "./pages";
+import {Comments} from "./components/CommentsContainer/Comments";
 
 const router = createBrowserRouter([
     {path: '', element: <MainLayout/>,

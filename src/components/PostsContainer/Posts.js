@@ -9,7 +9,7 @@ const Posts = ({userId}) => {
     useEffect(() => {
         postService.getByUserId(userId).then(({data}) => setPosts(data))
     }, [userId]);
-    console.log(posts)
+
     return (
         <div>
             {posts.map(post => <Post key={post.id} post={post}/>)}

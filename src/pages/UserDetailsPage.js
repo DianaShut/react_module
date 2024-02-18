@@ -14,6 +14,8 @@ const UserDetailsPage = () => {
     return (
         <div>
             {userDetails && <UserDetails userDetails={userDetails}/>}
+            <hr/>
+            <Outlet/>
         </div>
     );
 };

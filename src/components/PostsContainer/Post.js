@@ -1,10 +1,12 @@
+import {useNavigate} from "react-router-dom";
+
 const Post = ({post}) => {
     const{id, title} =post
-    console.log(post)
+    const navigate = useNavigate()
     return (
         <div>
-            <div>{id} - {title}</div>
-            <button>details</button>
+            <div>{id}. Title: {title}</div>
+            <button onClick={() => navigate(`/posts/${id}`)}>details</button>
         </div>
     );
 };
