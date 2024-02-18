@@ -6,7 +6,7 @@ const User = ({user}) => {
     return (
         <div>
             <div>{id} - {name}</div>
-            <button onClick={() => navigate(id.toString())}>view more</button>
+            <button onClick={() => navigate(`/users/${id}`)}>view more</button>
         </div>
     );
 };

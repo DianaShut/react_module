@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {useParams} from "react-router-dom";
+import {Outlet, useParams} from "react-router-dom";
 import {userService} from "../services/userService";
 import {UserDetails} from "../components/UsersContainer/UserDetails";
 
