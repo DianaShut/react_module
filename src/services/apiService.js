@@ -1,0 +1,16 @@
+import axios, {request} from "axios";
+import {baseURL} from "../constans";
+import {authService} from "./authService";
+
+const apiService = axios.create({baseURL})
+
+apiService.interceptors.request.use(request=> {
+    const token = authService.getToken(); // забираємо токен з localStorage
+
+    if(token){
+        request.headers.Authorization =`Bearer ${token}`
+    }
+    return request
+})
+
+export {apiService}
