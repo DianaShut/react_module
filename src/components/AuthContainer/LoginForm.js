@@ -24,7 +24,6 @@ const LoginForm = () => {
                 {error && <div>Username or password incorrect</div>}
                 <div>Username: <input type="text" {...register('username')}/></div>
                 <div>Password: <input type="text" {...register('password')}/></div>
-                <div>Confirm password: <input type="text" {...register('re_password')}/></div>
                 <button>Login</button>
             </form>
         </div>
