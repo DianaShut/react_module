@@ -1,0 +1,19 @@
+.Episodes{
+    display: grid;
+    grid-template-columns: repeat(4, 320px);
+    grid-template-rows: repeat(5, 115px);
+    justify-content: center;
+    margin: 0;
+}
+
+.buttons{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 6px;
+}
+
+.buttons button{
+    width: 90px;
+}
