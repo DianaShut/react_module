@@ -2,35 +2,25 @@ import {useEffect, useState} from "react";
 import css from './Episodes.module.css'
 import {EpisodeService} from "../../../services";
 import {Episode} from "../Episode/Episode";
-import {useSearchParams} from "react-router-dom";
-import {useAppContext} from "../../../hooks";
+import {usePageQuery} from "../../../hooks";
+
+
 
 const Episodes = () => {
     const [episodesRes, setEpisodesRes] = useState({prev: null, next: null, results:[]})
-    const [query, setQuery] =useSearchParams({page: '1'})
-    const [prevNext, setPrevNext] = useState({prev:null, next:null})
-    const {trigger} = useAppContext()
+    const {page, nextPage, prevPage} =usePageQuery()
+
 
     useEffect(() => {
-        EpisodeService.getAll().then(({data}) => {
-            setEpisodesRes(data)
-            setPrevNext({prev:data, next: data})
+        EpisodeService.getAll(page).then(({data}) => {
+            setEpisodesRes(() =>{
+                const{info:{next, prev}, results} = data;
+                return {
+                    next, prev, results
+                }
+            })
         })
-    }, [query, trigger]);
-
-    const prev = () =>{
-        setQuery(prev=>{
-            prev.set('page', (+prev.get('page') - 1).toString())
-            return prev
-        })
-    }
-
-    const next =() =>{
-        setQuery(next =>{
-            next.set('page', (+next.get('page')-1).toString())
-            return next
-        })
-    }
+    }, [page]);
 
     return (
         <div>
@@ -38,8 +28,8 @@ const Episodes = () => {
                 {episodesRes.results.map(episode => <Episode key={episode.id} episode={episode}/>)}
             </div>
             <div className={css.buttons}>
-                <button disabled={!prevNext.prev} onClick={prev}>prev</button>
-                <button disabled={!prevNext.next} onClick={next}>next</button>
+                <button disabled={!episodesRes.prev} onClick={prevPage}>prev</button>
+                <button disabled={!episodesRes.next} onClick={nextPage}>next</button>
             </div>
         </div>
     );

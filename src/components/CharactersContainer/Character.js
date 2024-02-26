@@ -1,7 +1,10 @@
-const Character = () => {
+const Character = ({character}) => {
+    const {id, name, image} =character
     return (
         <div>
-            Character
+            <div>Id: {id}</div>
+            <div>Name: {name}</div>
+            <img src={image} alt={name}/>
         </div>
     );
 };

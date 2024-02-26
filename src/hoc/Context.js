@@ -3,16 +3,14 @@ import {createContext, useState} from "react";
 const Context = createContext(null)
 
 const ContextProvider = ({children}) =>{
-    const [trigger, setTrigger] = useState(null)
-
-    const changeTrigger = () =>{
-        setTrigger(prev =>!prev)
-    }
+    const state = useState(null)
     return(
         <div>
-            <ContextProvider value={{trigger, changeTrigger}}>
+            <ContextProvider value={state}>
                 {children}
             </ContextProvider>
         </div>
     )
 }
+
+export {Context, ContextProvider}

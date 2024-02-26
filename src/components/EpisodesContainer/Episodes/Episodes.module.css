@@ -1,7 +1,6 @@
 .Episodes{
-    display: grid;
-    grid-template-columns: repeat(4, 320px);
-    grid-template-rows: repeat(5, 115px);
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     margin: 0;
 }

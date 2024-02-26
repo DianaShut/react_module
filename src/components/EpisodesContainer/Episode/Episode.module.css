@@ -1,6 +1,12 @@
 .episode{
     border: 1px solid black ;
+    width: calc(20% - 2px);
 }
+.episode:hover{
+    cursor: pointer;
+    background-color: grey;
+}
+
 body a{
     text-decoration: none;
     color: black;
